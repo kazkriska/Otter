@@ -1,4 +1,6 @@
-const allItemInArray = (inputArray, conditionStr, typeString) => {
+//* TESTED (EXPORT READY) ✔️✔️
+
+const everyItemInArray = (inputArray, conditionStr, typeString) => {
   if (conditionStr === 'is') {
     return inputArray.every((item) => typeof item === typeString);
   }
@@ -9,4 +11,4 @@ const allItemInArray = (inputArray, conditionStr, typeString) => {
   throw new Error(`INVALID Condition chose 'is' or 'isnot'`);
 };
 
-export default allItemInArray;
+export default everyItemInArray;

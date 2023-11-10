@@ -1,19 +1,23 @@
+import isValid from '../utils/IA_isValid.js';
+import propExistCheck from '../utils/OiA_propExistCheck.js';
+import trimArray from '../utils/trimArray.js';
+
 class Otter {
   constructor() {
     this._inputArray;
     this._attributes = {
       groupWith: null,
       sortBy: 'id',
-      sortingStrategy: (a, b) => a - b, // ASC
+      // sortingStrategy: (a, b) => a - b, // ASC
     };
     this._state = {
-      rawState: null,  //TODO make a Set // = new Set(internalState.map(item => item.id))
+      rawState: null, //TODO make a Set // = new Set(internalState.map(item => item.id))
       internalState: null, //TODO make a Map // = groupedState.forEach(group => {group.map((item, index) => internalState.push({id: item[0], r_pos: item[1], pos: internalState.length + * 0 OR 1 * }) ) })
-      groupedState: null, //TODO make an array of Maps of groups [ [ [], [] ], [ [], [] ], [ [], [] ], [ [], [] ] ] 
+      groupedState: null, //TODO make an array of Maps of groups [ [ [], [] ], [ [], [] ], [ [], [] ], [ [], [] ] ]
       info: {
         hasInitialized: false,
-        hasStateChanged: false, 
-        latest_changes_sent_to_server: false, 
+        hasStateChanged: false,
+        latest_changes_sent_to_server: false,
         latest_changes_fetched_from_server: false,
         save_to_local: false,
         fetch_from_local: false,
@@ -22,7 +26,20 @@ class Otter {
   }
 
   //* Otter core methods
-  init() {}
+  init(inputArray, inputAttributes) {
+    trimArray(inputArray, 'mutate');
+    if (isValid(inputArray)) {
+      if (
+        inputAttributes &&
+        propExistCheck(inputArray, Object.values(inputAttributes))
+      ) {
+        for (const attr in inputAttributes) {
+          this._attributes[attr] = inputAttributes[attr];
+        }
+      }
+    }
+  }
+
   acceptChange() {}
   fetchUpdatesFromServer() {}
   sendUpdatesToServer() {}
