@@ -1,4 +1,6 @@
 import init from '../otter_methods/init.js';
+import propExistCheck from '../utils/OiA_propExistCheck.js';
+import xerox from '../utils/parsers/xerox.js'
 
 class Otter {
   constructor() {
@@ -26,8 +28,26 @@ class Otter {
     this.init = this.init.bind(this);
   }
 
+  // SETTERS
+
+  setInternalState(value) {
+    //TODO Remember to create a func to add attribites as dependency for propCheck
+    if (propExistCheck(value, ['id', 'pos'])) {
+
+      this._state.internalState = xerox(value);
+    }
+  }
+  setGroupedState(value) {
+    if (propExistCheck(value, ['id', 'pos'])) {
+      this._state.internalState = xerox(value);
+    }
+  } 
+
+  setRawState(value) {
+    //TODO
+  }
   saveInputArray(value) {
-    this._inputArray = value;
+    this._inputArray = xerox(value);
   }
   saveInputAttributes(inputAttributes) {
     for (const attr in inputAttributes) {

@@ -7,5 +7,5 @@ const arr = [10, 6, 2, 3, 9, 8, 4, 7, 5, 1];
 const testOtter = new Otter();
 
 
-testOtter.init(arr);
+testOtter.init(testData);
 
