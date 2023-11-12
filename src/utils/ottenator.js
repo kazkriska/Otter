@@ -1,4 +1,4 @@
-import everyItemInArray from './EiA_typeCheck';
+import everyItemInArray from './EiA_typeCheck.js';
 
 // returns a new array mapped from the provided array but with id and pos keys
 function ottenator(inputArray) {

@@ -2,4 +2,5 @@ const categorizationArrayGenerator = (inputArray) => {
     console.log('kk')
     
  }
- export default groupify
+ export default categorizationArrayGenerator
+//  export default groupify
